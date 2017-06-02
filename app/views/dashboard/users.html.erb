@@ -1,0 +1,28 @@
+<h1>Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Group</th>
+      <th>Approved</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.group.name %></td>
+        <td><%= if user.approved then "Yes" else "No" end %></td>
+        <td><%= if !user.approved then link_to "Approve", :action => "approve", :user => user.id end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "All users", :action => "users" %>
+<%= link_to "Users awaiting approval", :action => "users", :approved => "false" %>
