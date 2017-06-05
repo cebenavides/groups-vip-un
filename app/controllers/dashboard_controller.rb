@@ -18,6 +18,6 @@ class DashboardController < ApplicationController
 
   	private  
 		def authenticate_admin
-	    	redirect_to '/', alert: 'Not authorized.' unless current_user && current_user.admin?
+	    	redirect_to '/', alert: 'Not authorized.' unless current_admin
 	  	end
 end

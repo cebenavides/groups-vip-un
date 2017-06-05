@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user, except: [:show]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -74,7 +74,7 @@ class GroupsController < ApplicationController
       params.require(:group).permit(:name, :description)
     end
 
-    def authenticate_admin
-        redirect_to '/', alert: 'Not authorized.' unless current_user && current_user.admin?
+    def authenticate_user
+        redirect_to '/', alert: 'Not authorized.' unless current_user || current_admin
       end
 end

@@ -11,5 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
-//= require_tree .
+//# require turbolinks
+//= require jquery.min.js
+//= require skel.min.js
+//= require util.js
+//= require main.js
