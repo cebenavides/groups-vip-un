@@ -11,20 +11,16 @@
   </head>
 
   <body>
-    <% if notice %>
-  	 <p class="notice" id="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-  	 <p class="alert"><%= alert %></p>    
-    <% end %>
+  	 <!--<p class="notice" id="notice"><%= notice %></p>-->
+  	 <!--<p class="alert"><%= alert %></p>-->    
 
     <header id="header">
       <div class="inner">
-        <a href="/" class="logo">VIP groups</a>
+        <a href="/" class="logo">Research groups</a>
         <nav id="nav">
           <% if user_signed_in? %>
             <%= link_to('Home', root_path) %>   
-            <%= link_to('My group', group_path(current_user.group)) %>      
+            <%= link_to('Edit my group', group_path(current_user.group)) %>      
             <%= link_to('Edit profile', edit_user_registration_path) %>        
             <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
           <% elsif admin_signed_in? %>
@@ -46,9 +42,18 @@
     <section id="footer">
       <div class="inner">
         <div class="copyright">
-          &copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a href="https://unsplash.com/">Unsplash</a>
+          &copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
         </div>
       </div>
     </section>
+
+    <script>
+      <% if notice %>
+        alert("<%= notice %>");
+      <% end %>
+      <% if alert %>
+        alert("<%= alert %>");
+      <% end %>
+    </script>
   </body>
 </html>

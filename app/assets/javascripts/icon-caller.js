@@ -1,0 +1,1 @@
+$(".icon-selector").iconSelector({input: '.icon'});

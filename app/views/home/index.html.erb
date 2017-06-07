@@ -1,13 +1,13 @@
 <section id="banner">
 	<div class="inner">
-		<h1>Grupos de investigación</h1>
+		<h1>Research groups</h1>
 		<ul class="actions">
-			<li><a href="#" class="button alt">Botón</a></li>
+			<li><a href="#" class="button alt">Button</a></li>
 		</ul>
 	</div>
 </section>
 
-<section id="one">
+<!--<section id="one">
 	<div class="inner">
 		<header>
 			<h2>Magna Etiam Lorem</h2>
@@ -17,14 +17,14 @@
 			<li><a href="#" class="button alt">Learn More</a></li>
 		</ul>
 	</div>
-</section>
+</section>-->
 
 <section id="two">
 	<div class="inner">
 		<article>
 			<div class="content">
 				<header>
-					<h3>Pellentesque adipis</h3>
+					<h3>Texto 1</h3>
 				</header>
 				<div class="image fit">
 					<img src="images/pic01.jpg" alt="" />
@@ -35,7 +35,7 @@
 		<article class="alt">
 			<div class="content">
 				<header>
-					<h3>Morbi interdum mol</h3>
+					<h3>Texto 2</h3>
 				</header>
 				<div class="image fit">
 					<img src="images/pic02.jpg" alt="" />
@@ -49,16 +49,20 @@
 <section id="three">
 	<div class="inner">
 		<div class="container">
+			<header>
+				<h2>Our groups</h2>
+			</header>
+
 			<div class="row">
 				<% @groups.each do |group| %>
 					<div class="4u 12u$(xsmall)">
 						<article>
 							<div class="content">
-								<span class="icon fa-laptop"></span>
+								<center><%= image_tag group.avatar.url(:medium), :style => "width:200px;height:200px;border-radius:50%" %></center>
 								<header>
 									<h3><%= group.name %></h3>
 								</header>
-								<p><%= group.description %></p>
+								<p><%= truncate(group.description, :length => 110) %></p>
 								<ul class="actions">
 									<li><%= link_to "Learn more", group_path(group), :class => "button alt" %></li>
 								</ul>
