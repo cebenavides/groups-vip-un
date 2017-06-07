@@ -19,8 +19,8 @@
         <a href="/" class="logo">Research groups</a>
         <nav id="nav">
           <% if user_signed_in? %>
-            <%= link_to('Home', root_path) %>   
-            <%= link_to('Edit my group', group_path(current_user.group)) %>      
+            <%= link_to('Home', root_path) %>                   
+            <%= link_to('Edit my group', edit_group_path(current_user.group)) %>      
             <%= link_to('Edit profile', edit_user_registration_path) %>        
             <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
           <% elsif admin_signed_in? %>

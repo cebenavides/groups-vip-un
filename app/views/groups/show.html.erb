@@ -10,20 +10,27 @@
 
 		<h3>Members</h3>
 		<div class="row">
-				<% @users.each do |user| %>
-					<div class="4u 12u$(xsmall)">
-						<article>
-							<div class="content">
-								<center><%= image_tag user.avatar.url(:medium), :style => "width:200px;height:200px;border-radius:50%" %></center>
-								<header>
-									<p><strong><%= user.name %></strong></p>
-								</header>
-								<p>Email: <%= user.email %></p>
-								<p>Position: <%= user.position %></p>
-							</div>
-						</article>
-					</div>	
-				<% end %>	
-			</div>		
+			<% @users.each do |user| %>
+				<div class="4u 12u$(xsmall)">
+					<article>
+						<div class="content">
+							<center><%= image_tag user.avatar.url(:medium), :style => "width:200px;height:200px;border-radius:50%" %></center>
+							<header>
+								<p><strong><%= user.name %></strong></p>
+							</header>
+							<p>Email: <%= user.email %></p>
+							<p><%= user.position %></p>
+						</div>
+					</article>
+				</div>	
+			<% end %>	
+		</div>
+
+		<h3>Publications</h3>
+		<ul>
+			<% @publications.each do |publication| %>
+				<li><%= publication.name %> | <%= link_to "Link", publication.link %></li>
+			<% end %>
+		</ul>
 	</div>
 </section>

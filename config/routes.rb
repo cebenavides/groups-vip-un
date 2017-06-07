@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   get 'home/index'
   get 'dashboard/users'
   get 'dashboard/approve'
@@ -9,7 +8,10 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations'}
   devise_for :admins
 
-  resources :groups
+  resources :groups do
+    get 'list', on: :member
+    resources :publications, except: :index
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

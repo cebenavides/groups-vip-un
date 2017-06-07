@@ -1,0 +1,12 @@
+<section id="main" >
+  <div class="inner">
+    <header class="major special">
+      <h1>Editing publication</h1>
+      <p>Edit a existing one</p>
+    </header>
+
+	<%= render 'form', group: @group, publication: @publication %>
+
+	<%= link_to 'Back', group_path(@group) %>    
+  </div>
+</section>

@@ -1,12 +1,11 @@
 <section id="main" >
   <div class="inner">
     <header class="major special">
-      <h1>New group</h1>
+      <h1>New publication</h1>
       <p>Create a new one</p>
     </header>
 
-	<%= render 'form', group: @group %>
-	<%= link_to 'Back', root_path %>
-    
+	<%= render 'form', group: @group, publication: @publication %>
+	<%= link_to 'Back', group_path(@group) %>    
   </div>
 </section>

@@ -1,6 +1,7 @@
-class GroupsController < ApplicationController
-  before_action :authenticate_user, except: [:show]
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+class GroupsController < ApplicationController  
+  before_action :authenticate_admin, only: [:index]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :list]
+  before_action :authenticate_user, except: [:show, :index]
 
   # GET /groups
   # GET /groups.json
@@ -8,10 +9,15 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
+  def list
+    @publications = @group.publications
+  end
+
   # GET /groups/1
   # GET /groups/1.json
   def show
     @users = @group.users.where(approved: true)
+    @publications = @group.publications
   end
 
   # GET /groups/new
@@ -75,6 +81,10 @@ class GroupsController < ApplicationController
     end
 
     def authenticate_user
-        redirect_to '/', alert: 'Not authorized.' unless current_user || current_admin
+        redirect_to '/', alert: 'Not authorized.' unless (current_user && current_user.group == @group) || current_admin
+    end
+
+    def authenticate_admin
+        redirect_to '/', alert: 'Not authorized.' unless current_admin
     end
 end

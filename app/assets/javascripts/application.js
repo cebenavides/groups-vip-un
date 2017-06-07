@@ -16,5 +16,3 @@
 //= require skel.min.js
 //= require util.js
 //= require main.js
-//= require sweetalert2
-//= require sweet-alert2-rails
