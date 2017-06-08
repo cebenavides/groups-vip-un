@@ -15,11 +15,11 @@
 					<article>
 						<div class="content">
 							<center><%= image_tag user.avatar.url(:medium), :style => "width:200px;height:200px;border-radius:50%" %></center>
-							<header>
-								<p><strong><%= user.name %></strong></p>
-							</header>
-							<p style="padding: 0;">Email: <%= user.email %></p>
-							<p style="padding: 0;"><%= user.position %></p>
+							<ul class="alt">
+								<li><strong><%= user.name %></strong></li>
+								<li>Email: <%= user.email %></li>
+								<li><%= user.position %></li>
+							</ul>
 						</div>
 					</article>
 				</div>	
