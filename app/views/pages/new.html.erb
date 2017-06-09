@@ -1,0 +1,14 @@
+<section id="main" >
+  <div class="inner">
+    <header class="major special">
+      <h1>New page</h1>
+      <p>Create a new page for the group...</p>
+    </header>
+
+	<%= render 'form', page: @page %>
+	<%= link_to 'Back', pages_path %>	    
+  </div>
+</section>
+
+<%= tinymce_assets %>
+<%= tinymce %>

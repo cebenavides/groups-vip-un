@@ -20,4 +20,8 @@
 /node_modules
 /yarn-error.log
 
+# Ignore paperclip images
+/public/system/groups/*
+/public/system/users/*
+
 .byebug_history

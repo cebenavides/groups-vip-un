@@ -1,0 +1,9 @@
+theme: "modern"
+toolbar:
+  - styleselect | bold italic | undo redo | forecolor
+  - image | link
+plugins:
+  - image
+  - uploadimage
+  - link
+  - textcolor
