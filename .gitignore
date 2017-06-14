@@ -25,3 +25,4 @@
 /public/system/users/*
 
 .byebug_history
+config/database.yml\nconfig/secrets.yml
