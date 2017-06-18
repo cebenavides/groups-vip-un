@@ -5,8 +5,8 @@
       <p>Insert the changes</p>
     </header>
 
-	<%= render 'form', page: @page %>
-	<%= link_to 'Back', pages_path %>	    
+	<%= render 'form', group: @group, page: @page %>
+	<%= link_to 'Back', group_path(@group) %>	    
   </div>
 </section>
 

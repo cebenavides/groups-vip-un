@@ -3,8 +3,8 @@
 <section id="main" >
   <div class="inner">
 	<%= @page.content.html_safe %>
-    <%= link_to 'Edit', edit_page_path(@page) %> |
-	<%= link_to 'Back', pages_path %>
+    <%= link_to 'Edit', edit_group_page_path(@group, @page) %> |
+	<%= link_to 'Back', group_path(@group) %>
   </div>
 </section>
 

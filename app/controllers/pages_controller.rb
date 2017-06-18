@@ -1,10 +1,11 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_group
+  before_action :set_page, only: [:show, :edit, :update, :destroy]  
 
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
+    @pages = @group.pages
   end
 
   # GET /pages/1
@@ -14,7 +15,7 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    @page = Page.new
+    @page = @group.pages.build
   end
 
   # GET /pages/1/edit
@@ -24,14 +25,14 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
-    @page = Page.new(page_params)
+    @page = @group.pages.build(page_params)
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to group_path(@group) }
         format.json { render :show, status: :created, location: @page }
       else
-        format.html { render :new }
+        format.html { render :action => "new" }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +43,10 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to group_path(@group) }
         format.json { render :show, status: :ok, location: @page }
       else
-        format.html { render :edit }
+        format.html { render :action => "edit" }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +57,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to group_path(@group) }
       format.json { head :no_content }
     end
   end
@@ -67,8 +68,12 @@ class PagesController < ApplicationController
       @page = Page.find(params[:id])
     end
 
+    def set_group
+      @group = Group.friendly.find(params[:group_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:content)
+      params.require(:page).permit(:content, :group_id)
     end
 end
