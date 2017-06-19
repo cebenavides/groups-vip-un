@@ -27,9 +27,16 @@
 		</div>
 
 		<h3>Publications</h3>
-		<ul>
+		<ul class="alt">
 			<% @publications.each do |publication| %>
 				<li><%= publication.name %> | <%= link_to "Link", publication.link %></li>
+			<% end %>
+		</ul>
+
+		<h3>Pages</h3>
+		<ul class="alt">
+			<% @pages.each do |page| %>
+				<li><%= truncate(strip_tags(page.content), :length => 20) %> | <%= link_to "Link", group_page_path(@group, page) %></li>
 			<% end %>
 		</ul>
 	</div>

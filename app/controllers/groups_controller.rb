@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
   def show
     @users = @group.users.where(approved: true)
     @publications = @group.publications
+    @pages = @group.pages
   end
 
   # GET /groups/new
