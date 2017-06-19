@@ -12,7 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_area :content, id: :page_content, :class => "tinymce", :rows => 40, :cols => 120 %>
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :page_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: :page_content, :class => "tinymce", :rows => 10 %>
   </div>
 
   <div class="actions">

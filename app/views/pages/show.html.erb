@@ -2,6 +2,7 @@
 
 <section id="main" >
   <div class="inner">
+  	<h1><%= @page.title %></h1>
 	<%= @page.content.html_safe %>
     <%= link_to 'Edit', edit_group_page_path(@group, @page) %> |
 	<%= link_to 'Back', group_path(@group) %>

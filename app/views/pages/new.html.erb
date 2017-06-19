@@ -2,7 +2,7 @@
   <div class="inner">
     <header class="major special">
       <h1>New page</h1>
-      <p>Create a new page for the group...</p>
+      <p>Create a new page for the group <%= @group.name %></p>
     </header>
 
 	<%= render 'form', group: @group, page: @page %>

@@ -16,7 +16,7 @@
       <tbody>
         <% @pages.each do |page| %>
           <tr>
-            <td><%= truncate(strip_tags(page.content), :length => 20) %></td>
+            <td><%= page.title %></td>
             <td><%= link_to 'Show', group_page_path(@group, page) %></td>
             <td><%= link_to 'Edit', edit_group_page_path(@group, page) %></td>
             <td><%= link_to 'Destroy', group_page_path(@group, page), method: :delete, data: { confirm: 'Are you sure?' } %></td>
