@@ -1,4 +1,4 @@
-<section id="main" >
+<section id="main">
 	<div class="inner">
 		<header class="major special">
 			<h1><%= @group.name %></h1>
@@ -8,36 +8,42 @@
 		
 		<p><%= @group.description %></p>
 
-		<h3>Members</h3>
-		<div class="row">
-			<% @users.each do |user| %>
-				<div class="4u 12u$(xsmall)">
-					<article>
-						<div class="content">
-							<center><%= image_tag user.avatar.url(:medium), :style => "width:200px;height:200px;border-radius:50%" %></center>
-							<ul class="alt">
-								<li><strong><%= user.name %></strong></li>
-								<li>Email: <%= user.email %></li>
-								<li><%= user.position %></li>
-							</ul>
-						</div>
-					</article>
-				</div>	
-			<% end %>	
-		</div>
+		<% if @users.any? %>
+			<h3>Members</h3>
+			<div class="row">
+				<% @users.each do |user| %>
+					<div class="4u 12u$(xsmall)">
+						<article>
+							<div class="content">
+								<center><%= image_tag user.avatar.url(:medium), :style => "width:200px;height:200px;border-radius:50%" %></center>
+								<ul class="alt">
+									<li><strong><%= user.name %></strong></li>
+									<li>Email: <%= user.email %></li>
+									<li><%= user.position %></li>
+								</ul>
+							</div>
+						</article>
+					</div>	
+				<% end %>	
+			</div>
+		<% end %>
 
-		<h3>Publications</h3>
-		<ul class="alt">
-			<% @publications.each do |publication| %>
-				<li><%= publication.name %> | <%= link_to "Link", publication.link %></li>
-			<% end %>
-		</ul>
+		<% if @publications.any? %>
+			<h3>Publications</h3>
+			<ul class="alt">
+				<% @publications.each do |publication| %>
+					<li><%= publication.name %> | <%= link_to "Link", publication.link %></li>
+				<% end %>
+			</ul>
+		<% end %>
 
-		<h3>Pages</h3>
-		<ul class="alt">
-			<% @pages.each do |page| %>
-				<li><%= page.title %> | <%= link_to "Link", group_page_path(@group, page) %></li>
-			<% end %>
-		</ul>
+		<% if @pages.any? %>
+			<h3>Pages</h3>
+			<ul class="alt">
+				<% @pages.each do |page| %>
+					<li><%= page.title %> | <%= link_to "Link", group_page_path(@group, page) %></li>
+				<% end %>
+			</ul>
+		<% end %>
 	</div>
 </section>

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   
+  root to: "home#index"
+
   get 'home/index'
   get 'dashboard/users'
   get 'dashboard/approve'
 
-  root to: "home#index"
+  post '/tinymce_assets' => 'tinymce_assets#create'  
 
   devise_for :users, :controllers => { registrations: 'registrations'}
   devise_for :admins
