@@ -32,10 +32,8 @@ class PublicationsController < ApplicationController
     respond_to do |format|
       if @publication.save
         format.html { redirect_to group_path(@group) }
-        format.json { render :show, status: :created, location: @publication }
       else
         format.html { render :action => "new" }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +45,8 @@ class PublicationsController < ApplicationController
     respond_to do |format|
       if @publication.update(publication_params)
         format.html { redirect_to group_path(@group) }
-        format.json { render :show, status: :ok, location: @publication }
       else
         format.html { render :action => "edit" }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,7 +58,6 @@ class PublicationsController < ApplicationController
     @publication.destroy
     respond_to do |format|
       format.html { redirect_to group_path(@group) }
-      format.json { head :no_content }
     end
   end
 

@@ -30,10 +30,8 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.save
         format.html { redirect_to group_path(@group) }
-        format.json { render :show, status: :created, location: @page }
       else
         format.html { render :action => "new" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,10 +42,8 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to group_path(@group) }
-        format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :action => "edit" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,8 +53,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to group_path(@group) }
-      format.json { head :no_content }
+      format.html { redirect_to group_path(@group) }      
     end
   end
 
