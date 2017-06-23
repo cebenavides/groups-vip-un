@@ -12,7 +12,7 @@ class DashboardController < ApplicationController
   	def approve
   		user = User.find(params[:user])
   		if user.update(approved: true)
-  			redirect_to dashboard_users_path, notice: 'User approved.'
+  			redirect_to dashboard_users_path
   		end
   	end
 
