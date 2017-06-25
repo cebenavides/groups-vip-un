@@ -1,5 +1,4 @@
-Rails.application.routes.draw do
-  
+Rails.application.routes.draw do  
   root to: "home#index"
 
   get 'home/index'
@@ -14,7 +13,6 @@ Rails.application.routes.draw do
   resources :groups do
     get 'list', on: :member
     resources :publications, except: :index
-    resources :pages
-  end
-  
+    resources :pages, shallow: true
+  end  
 end

@@ -1,6 +1,6 @@
-class PagesController < ApplicationController
-  before_action :set_group
+class PagesController < ApplicationController  
   before_action :set_page, only: [:show, :edit, :update, :destroy]  
+  before_action :set_group
 
   # GET /pages
   # GET /pages.json
@@ -64,7 +64,11 @@ class PagesController < ApplicationController
     end
 
     def set_group
-      @group = Group.friendly.find(params[:group_id])
+      if params[:group_id]
+        @group = Group.friendly.find(params[:group_id])
+      else
+        @group = @page.group
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

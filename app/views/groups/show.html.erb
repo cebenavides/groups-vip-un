@@ -41,7 +41,7 @@
 			<h3>Pages</h3>
 			<ul class="alt">
 				<% @pages.each do |page| %>
-					<li><%= page.title %> | <%= link_to "Link", group_page_path(@group, page) %></li>
+					<li><%= page.title %> | <%= link_to "Link", page %></li>
 				<% end %>
 			</ul>
 		<% end %>
