@@ -1,10 +1,11 @@
 theme: "modern"
 toolbar:
   - styleselect | bold italic | undo redo | forecolor
-  - image | uploadimage | media | link
+  - image | uploadimage | media | link | table
 plugins:
   - image
   - uploadimage
   - media
   - link
   - textcolor
+  - table
