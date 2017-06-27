@@ -2298,6 +2298,43 @@
 				.box .image.featured:last-child img {
 					border-radius: 0 0 6px 6px;
 				}
+				
+/* Box Members */
+.members .box {
+		background: #fff;
+		border-radius: 6px;
+		box-shadow: 0 2px 0 0 #e5e5e5;
+		margin: 0 0 2em 0;
+		padding: 1em;
+	}
+
+		.members .box .image.featured {
+			border-radius: 0;
+			display: block;
+			margin: 1em 0 1em -1em;
+			position: relative;
+			width: calc(100% + 2em);
+		}
+
+			.members .box .image.featured:first-child {
+				border-radius: 6px 6px 0 0;
+				margin-bottom: 1em;
+				margin-top: -1em;
+			}
+
+				.members .box .image.featured:first-child img {
+					border-radius: 6px 6px 0 0;
+				}
+
+			.members .box .image.featured:last-child {
+				border-radius: 0 0 6px 6px;
+				margin-bottom: -1em;
+				margin-top: 1em;
+			}
+
+				.members .box .image.featured:last-child img {
+					border-radius: 0 0 6px 6px;
+				}
 
 /* Icon */
 

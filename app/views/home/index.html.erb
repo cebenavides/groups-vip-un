@@ -4,22 +4,19 @@
 <!-- Banner -->
 <section id="banner">
 	<h2><strong>VIP groups UN</strong></h2>
-	<p>Another fine responsive site template freebie by HTML5 UP.</p>
+	<!--<p>Another fine responsive site template freebie by HTML5 UP.</p>
 	<ul class="actions">
 		<li><a href="#" class="button special">Sign Up</a></li>
 		<li><a href="#" class="button">Learn More</a></li>
-	</ul>
+	</ul>-->
 </section>
 
 <!-- Main -->
 <section id="main" class="container">
 	<section class="box special">
 		<header class="major">
-			<h2>Introducing the ultimate mobile app
-			<br />
-			for doing stuff with your phone</h2>
-			<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare<br />
-			adipiscing nunc adipiscing. Condimentum turpis massa.</p>
+			<h2>Research groups supervised by <br> Professor Winston Percybrooks</h2>
+			<p>These are our groups...</p>
 		</header>
 		<!--<span class="image featured"><img src="images/banner.jpg" alt="" /></span>-->
 	</section>
@@ -57,7 +54,6 @@
 				<section class="box special">
 					<span class="image featured"><%= image_tag group.avatar.url(:medium) %></span>
 					<h3><%= group.name %></h3>
-					<p><%= truncate(group.description, :length => 110) %></p>
 					<ul class="actions">
 						<li><%= link_to "Learn more", group_path(group), :class => "button alt" %></li>
 					</ul>

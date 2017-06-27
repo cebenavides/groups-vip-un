@@ -13,7 +13,7 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//# require turbolinks
 //= require jquery.dropotron.min
 //= require jquery.scrollgress.min
 //= require skel.min
