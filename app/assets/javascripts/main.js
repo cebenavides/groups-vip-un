@@ -1,55 +1,59 @@
 /*
-	Introspect by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 (function($) {
 
 	skel.breakpoints({
-		xlarge:	'(max-width: 1680px)',
-		large:	'(max-width: 1280px)',
-		medium:	'(max-width: 980px)',
-		small:	'(max-width: 736px)',
-		xsmall:	'(max-width: 480px)'
+		wide: '(max-width: 1680px)',
+		normal: '(max-width: 1280px)',
+		narrow: '(max-width: 980px)',
+		narrower: '(max-width: 840px)',
+		mobile: '(max-width: 736px)',
+		mobilep: '(max-width: 480px)'
 	});
 
 	$(function() {
 
 		var	$window = $(window),
-			$body = $('body');
-
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
-
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 100);
-			});
+			$body = $('body'),
+			$header = $('#header'),
+			$banner = $('#banner');
 
 		// Fix: Placeholder polyfill.
 			$('form').placeholder();
 
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
+		// Prioritize "important" elements on narrower.
+			skel.on('+narrower -narrower', function() {
 				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
+					'.important\\28 narrower\\29',
+					skel.breakpoint('narrower').active
 				);
+			});
+
+		// Dropdowns.
+			$('#nav > ul').dropotron({
+				alignment: 'right'
 			});
 
 		// Off-Canvas Navigation.
 
-			// Navigation Panel Toggle.
-				$('<a href="#navPanel" class="navPanelToggle"></a>')
+			// Navigation Button.
+				$(
+					'<div id="navButton">' +
+						'<a href="#navPanel" class="toggle"></a>' +
+					'</div>'
+				)
 					.appendTo($body);
 
 			// Navigation Panel.
 				$(
 					'<div id="navPanel">' +
-						$('#nav').html() +
-						'<a href="#navPanel" class="close"></a>' +
+						'<nav>' +
+							$('#nav').navList() +
+						'</nav>' +
 					'</div>'
 				)
 					.appendTo($body)
@@ -59,13 +63,37 @@
 						hideOnSwipe: true,
 						resetScroll: true,
 						resetForms: true,
-						side: 'left'
+						side: 'left',
+						target: $body,
+						visibleClass: 'navPanel-visible'
 					});
 
-			// Fix: Remove transitions on WP<10 (poor/buggy performance).
+			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
 				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-					$('#navPanel')
+					$('#navButton, #navPanel, #page-wrapper')
 						.css('transition', 'none');
+
+		// Header.
+		// If the header is using "alt" styling and #banner is present, use scrollwatch
+		// to revert it back to normal styling once the user scrolls past the banner.
+		// Note: This is disabled on mobile devices.
+			if (!skel.vars.mobile
+			&&	$header.hasClass('alt')
+			&&	$banner.length > 0) {
+
+				$window.on('load', function() {
+
+					$banner.scrollwatch({
+						delay:		0,
+						range:		0.5,
+						anchor:		'top',
+						on:			function() { $header.addClass('alt reveal'); },
+						off:		function() { $header.removeClass('alt'); }
+					});
+
+				});
+
+			}
 
 	});
 

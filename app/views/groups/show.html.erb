@@ -1,9 +1,8 @@
-<section id="main">
-	<div class="inner">
-		<header class="major special">
-			<h1><%= @group.name %></h1>
-			<p>Description of the group</p>
-		</header>
+<section id="main" class="container">
+	<header>
+		<h2><%= @group.name %></h2>
+	</header>
+	<div class="box">
 		<a href="#" class="image fit"><%= image_tag @group.avatar.url %></a>
 		
 		<p><%= @group.description %></p>

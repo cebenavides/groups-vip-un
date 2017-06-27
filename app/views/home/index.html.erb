@@ -1,76 +1,88 @@
+<% provide(:body_class, "landing") %>
+<% provide(:header_class, "alt") %>
+
+<!-- Banner -->
 <section id="banner">
-	<div class="inner">
-		<h1>Research groups</h1>
-		<ul class="actions">
-			<li><a href="#" class="button alt">Button</a></li>
-		</ul>
-	</div>
+	<h2><strong>VIP groups UN</strong></h2>
+	<p>Another fine responsive site template freebie by HTML5 UP.</p>
+	<ul class="actions">
+		<li><a href="#" class="button special">Sign Up</a></li>
+		<li><a href="#" class="button">Learn More</a></li>
+	</ul>
 </section>
 
-<!--<section id="one">
-	<div class="inner">
-		<header>
-			<h2>Magna Etiam Lorem</h2>
+<!-- Main -->
+<section id="main" class="container">
+	<section class="box special">
+		<header class="major">
+			<h2>Introducing the ultimate mobile app
+			<br />
+			for doing stuff with your phone</h2>
+			<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare<br />
+			adipiscing nunc adipiscing. Condimentum turpis massa.</p>
 		</header>
-		<p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante.</p>
-		<ul class="actions">
-			<li><a href="#" class="button alt">Learn More</a></li>
-		</ul>
-	</div>
-</section>-->
+		<!--<span class="image featured"><img src="images/banner.jpg" alt="" /></span>-->
+	</section>
 
-<!--<section id="two">
-	<div class="inner">
-		<article>
-			<div class="content">
-				<header>
-					<h3>Texto 1</h3>
-				</header>
-				<div class="image fit">
-					<img src="images/pic01.jpg" alt="" />
-				</div>
-				<p>Cumsan mollis eros. Pellentesque a diam sit amet mi magna ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit amet lorem ipsum feugiat tempus.</p>
+	<!--<section class="box special features">
+		<div class="features-row">
+			<section>
+				<span class="icon major fa-bolt accent2"></span>
+				<h3>Magna etiam</h3>
+				<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+			<section>
+				<span class="icon major fa-area-chart accent3"></span>
+				<h3>Ipsum dolor</h3>
+				<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+		</div>
+		<div class="features-row">
+			<section>
+				<span class="icon major fa-cloud accent4"></span>
+				<h3>Sed feugiat</h3>
+				<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+			<section>
+				<span class="icon major fa-lock accent5"></span>
+				<h3>Enim phasellus</h3>
+				<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+		</div>
+	</section>-->
+
+	<div class="row">
+		<% @groups.each do |group| %>
+			<div class="4u 12u(narrower)">
+				<section class="box special">
+					<span class="image featured"><%= image_tag group.avatar.url(:medium) %></span>
+					<h3><%= group.name %></h3>
+					<p><%= truncate(group.description, :length => 110) %></p>
+					<ul class="actions">
+						<li><%= link_to "Learn more", group_path(group), :class => "button alt" %></li>
+					</ul>
+				</section>
 			</div>
-		</article>
-		<article class="alt">
-			<div class="content">
-				<header>
-					<h3>Texto 2</h3>
-				</header>
-				<div class="image fit">
-					<img src="images/pic02.jpg" alt="" />
-				</div>
-				<p>Cumsan mollis eros. Pellentesque a diam sit amet mi magna ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit amet lorem ipsum feugiat tempus.</p>
-			</div>
-		</article>
+		<% end %>
 	</div>
-</section>-->
 
-<section id="three">
-	<div class="inner">
-		<div class="container">
-			<header>
-				<h2>Our groups</h2>
-			</header>
-
-			<div class="row">
-				<% @groups.each do |group| %>
-					<div class="4u 12u$(xsmall)">
-						<article>
-							<div class="content">
-								<center><%= image_tag group.avatar.url(:medium), :style => "width:200px;height:200px;border-radius:50%" %></center>
-								<header>
-									<h3><%= group.name %></h3>
-								</header>
-								<p><%= truncate(group.description, :length => 110) %></p>
-								<ul class="actions">
-									<li><%= link_to "Learn more", group_path(group), :class => "button alt" %></li>
-								</ul>
-							</div>
-						</article>
-					</div>	
-				<% end %>	
-			</div>		
-		</div>		
-	</div>
 </section>
+
+<!-- CTA -->
+<!--<section id="cta">
+
+	<h2>Sign up for beta access</h2>
+	<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc.</p>
+
+	<form>
+		<div class="row uniform 50%">
+			<div class="8u 12u(mobilep)">
+				<input type="email" name="email" id="email" placeholder="Email Address" />
+			</div>
+			<div class="4u 12u(mobilep)">
+				<input type="submit" value="Sign Up" class="fit" />
+			</div>
+		</div>
+	</form>
+
+</section>-->

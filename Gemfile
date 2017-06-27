@@ -41,6 +41,7 @@ gem 'font-awesome-rails'
 gem "paperclip", "~> 5.0.0"
 gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

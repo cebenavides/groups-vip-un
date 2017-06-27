@@ -1,12 +1,9 @@
-<section id="main" >
-  <div class="inner">
-    <header class="major special">
-      <h1>Editing group</h1>
-      <p>Edit a existing one</p>
-    </header>
-
-	<%= render 'form', group: @group %>
-	<%= link_to 'Back', root_path %>
-    
-  </div>
+<section id="main" class="container">
+	<header>
+		<h2>Editing group</h2>
+	</header>
+	<div class="box">
+		<%= render 'form', group: @group %>
+	  	<%= link_to 'Back', root_path %>
+	</div>
 </section>

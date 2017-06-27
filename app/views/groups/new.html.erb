@@ -1,11 +1,9 @@
-<section id="main" >
-  <div class="inner">
-    <header class="major special">
-      <h1>New group</h1>
-      <p>Create a new one</p>
-    </header>
-
-	<%= render 'form', group: @group %>
-	<%= link_to 'Back', root_path %>    
-  </div>
+<section id="main" class="container">
+	<header>
+		<h2>New group</h2>
+	</header>
+	<div class="box">
+		<%= render 'form', group: @group %>
+	  <%= link_to 'Back', root_path %>
+	</div>
 </section>

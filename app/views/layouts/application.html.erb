@@ -1,55 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Groups Website</title>
+    <title>VIP groups</title>
     <%= csrf_meta_tags %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
+  <body class="<%= yield :body_class %>">
+		<div id="page-wrapper">
+			<!-- Header -->
+			<header id="header" class="<%= yield :header_class %>">
+				<h1>
+					<a href="/">VIP groups</a>
+					<% if user_signed_in? %>
+	        	| <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "button alt small") %>
+					<% elsif admin_signed_in? %>
+	        	| <%= link_to('Logout', destroy_admin_session_path, :method => :delete, :class => "button alt small") %>
+					<% end %>
+				</h1>
+				<nav id="nav">
+					<ul>
+						<li><%= link_to "Home", root_path %></li>
+						<% if user_signed_in? %>
+							<li>
+								<a href="#" class="icon fa-angle-down">Sign in</a>
+								<ul>
+									<li><%= link_to('Publications', list_group_path(current_user.group)) %></li>
+			            <li><%= link_to('Pages', group_pages_path(current_user.group)) %></li>   
+			            <li><%= link_to('Edit information', edit_group_path(current_user.group)) %></li>   
+								</ul>
+							</li>
+	            <li><%= link_to('Edit my profile', edit_user_registration_path) %></li>
+						<% elsif admin_signed_in? %>
+	            <li><%= link_to('Groups', groups_path) %></li>   
+	            <li><%= link_to('Users', dashboard_users_path) %></li>
+						<% else %>
+							<li>
+								<a href="#" class="icon fa-angle-down">Sign in</a>
+								<ul>
+									<li><%= link_to 'Login for users', new_user_session_path %></li>
+	            		<li><%= link_to 'Login for admin', new_admin_session_path %></li>
+								</ul>
+							</li>
+						<% end %>
+					</ul>
+				</nav>
+			</header>
 
-  <body>
-  	 <!--<p class="notice" id="notice"><%= notice %></p>-->
-  	 <!--<p class="alert"><%= alert %></p>-->    
-
-    <header id="header">
-      <div class="inner">
-        <a href="/" class="logo">Research groups</a>
-        <nav id="nav">
-          <% if user_signed_in? %>
-            <%= link_to('Home', root_path) %>        
-            <%= link_to('Publications', list_group_path(current_user.group)) %> 
-            <%= link_to('Pages', group_pages_path(current_user.group)) %>            
-            <%= link_to('Edit my group', edit_group_path(current_user.group)) %>      
-            <%= link_to('Edit profile', edit_user_registration_path) %>        
-            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-          <% elsif admin_signed_in? %>
-            <%= link_to('Home', root_path) %>   
-            <%= link_to('Groups', groups_path) %>    
-            <%= link_to('Users', dashboard_users_path) %>   
-            <%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>        
-          <% else %>
-            <%= link_to('Login user', new_user_session_path)  %>  
-            <%= link_to('Login admin', new_admin_session_path)  %>  
-          <% end %>
-        </nav>
-      </div>
-    </header>
-    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-
-    <%= yield %>
-
-    <section id="footer">
-      <div class="inner">
-        <div class="copyright">
-          &copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
-        </div>
-      </div>
-    </section>
-
-    <script>
+			<%= yield %>
+			
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+					<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+					<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
+		</div>
+		
+		<script>
       <% if notice %>
         alert("<%= notice %>");
       <% end %>
@@ -57,5 +77,5 @@
         alert("<%= alert %>");
       <% end %>
     </script>
-  </body>
+	</body>
 </html>

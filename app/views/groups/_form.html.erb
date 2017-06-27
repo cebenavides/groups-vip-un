@@ -10,23 +10,30 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :group_name %>
+  
+  <div class="row uniform 50%">
+    <div class="field 12u">
+      <%= form.text_field :name, id: :group_name, placeholder: 'Name' %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :group_description %>
+  
+  <div class="row uniform 50%">
+    <div class="field 12u">
+      <%= form.text_area :description, id: :group_description, placeholder: 'Description' %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
-  </div>  
-
-  <div class="actions">
-    <%= form.submit %>
+  
+  <div class="row uniform 50%">
+    <div class="field 12u">
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar %>
+    </div>  
   </div>
+  
+  <div class="row uniform">
+    <div class="actions 12u">
+      <%= form.submit 'Submit', :class => 'button special small' %>
+    </div>
+  </div>
+  
 <% end %>

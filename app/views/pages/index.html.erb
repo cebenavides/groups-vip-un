@@ -1,14 +1,12 @@
-<section id="main" >
-  <div class="inner">
-    <header class="major special">
-      <h1>Pages</h1>
-      <p>List of all the pages by the group <%= @group.name %></p>
-    </header>
-
-    <table>
+<section id="main" class="container">
+	<header>
+		<h2>Pages by <%= @group.name %></h2>
+	</header>
+	<div class="box">
+		<table>
       <thead>
         <tr>
-          <th>Content</th>
+          <th>Title</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -25,6 +23,6 @@
       </tbody>
     </table>
 
-  <%= link_to('Add page', new_group_page_path(@group), :class => 'button special') %> 
-  </div>
+    <%= link_to('Add page', new_group_page_path(@group), :class => 'button special small') %> 
+	</div>
 </section>

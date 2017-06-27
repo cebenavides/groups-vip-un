@@ -1,32 +1,30 @@
-<section id="main" >
-  <div class="inner">
-    <header class="major special">
-      <h1>Publications</h1>
-      <p>List of all the publications by the group <%= @group.name %></p>
-    </header>
-
-    <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Link</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @publications.each do |publication| %>
+<section id="main" class="container">
+	<header>
+		<h2>Publications by <strong><%= @group.name %></strong></h2>
+	</header>
+	<div class="box">
+		<table>
+      <thead>
         <tr>
-          <td><%= publication.name %></td>
-          <td><%= publication.link %></td>
-          <td><%= link_to 'Add', new_group_publication_path(@group) %></td>
-          <td><%= link_to 'Edit', edit_group_publication_path(@group, publication) %></td>
-          <td><%= link_to 'Delete', group_publication_path(@group, publication), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Name</th>
+          <th>Link</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <%= link_to('Add publication', new_group_publication_path(@group), :class => 'button special') %> 
-  </div>
+      </thead>
+  
+      <tbody>
+        <% @publications.each do |publication| %>
+          <tr>
+            <td><%= publication.name %></td>
+            <td><%= publication.link %></td>
+            <td><%= link_to 'Add', new_group_publication_path(@group) %></td>
+            <td><%= link_to 'Edit', edit_group_publication_path(@group, publication) %></td>
+            <td><%= link_to 'Delete', group_publication_path(@group, publication), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  
+    <%= link_to('Add publication', new_group_publication_path(@group), :class => 'button special small') %>
+	</div>
 </section>

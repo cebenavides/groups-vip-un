@@ -1,13 +1,11 @@
-<section id="main" >
-  <div class="inner">
-    <header class="major special">
-      <h1>Editing Page</h1>
-      <p>Insert the changes</p>
-    </header>
-
-	<%= render 'form', group: nil, page: @page %>
-	<%= link_to 'Back', group_path(@group) %>	    
-  </div>
+<section id="main" class="container">
+	<header>
+		<h2>Editing page</h2>
+	</header>
+	<div class="box">
+		<%= render 'form', group: nil, page: @page %>
+	  <%= link_to 'Back', group_path(@group) %>	    
+	</div>
 </section>
 
 <%= tinymce_assets %>

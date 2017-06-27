@@ -11,17 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_area :name, id: :publication_name %>
+  <div class="row uniform 50%">
+    <div class="field 12u">
+      <%= form.text_area :name, id: :publication_name, placeholder: 'Name' %>
+    </div>
+  </div>
+  
+  <div class="row uniform 50%">
+    <div class="field 12u">
+      <%= form.text_field :link, id: :publication_link, placeholder: 'Link' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :link %>
-    <%= form.text_field :link, id: :publication_link %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row uniform">
+    <div class="actions 12u">
+      <%= form.submit 'Submit', :class => 'button special small' %>
+    </div>
   </div>
 <% end %>

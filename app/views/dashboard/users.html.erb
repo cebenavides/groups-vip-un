@@ -1,11 +1,9 @@
-<section id="main" >
-  <div class="inner">
-    <header class="major special">
-      <h1>Users</h1>
-      <p>List of all the registered users</p>
-    </header>
-
-    <table>
+<section id="main" class="container">
+	<header>
+		<h2>Users</h2>
+	</header>
+	<div class="box">
+		<table>
       <thead>
         <tr>
           <th>Email</th>
@@ -27,8 +25,7 @@
       </tbody>
     </table>
 
-    <%= link_to "All users", {:action => "users"}, :class => "button" %>
-    <%= link_to "Users awaiting approval", {:action => "users", :approved => "false"}, :class => "button special" %>
-    
-  </div>
+    <%= link_to "All users", {:action => "users"}, :class => "button small" %>
+    <%= link_to "Users awaiting approval", {:action => "users", :approved => "false"}, :class => "button special small" %>
+	</div>
 </section>
