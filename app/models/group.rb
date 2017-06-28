@@ -11,4 +11,9 @@ class Group < ApplicationRecord
 	has_many :users
 	has_many :publications
 	has_many :pages
+	
+	# For limiting the length of the slug
+	def normalize_friendly_id(string)
+	  super[0..33]
+	end
 end

@@ -5,4 +5,9 @@ class Page < ApplicationRecord
 	
 	belongs_to :group
 	has_many :images
+	
+	# For limiting the length of the slug
+	def normalize_friendly_id(string)
+	  super[0..33]
+	end
 end
