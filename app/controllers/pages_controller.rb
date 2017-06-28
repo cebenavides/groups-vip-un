@@ -4,13 +4,11 @@ class PagesController < ApplicationController
   before_action :set_group
 
   # GET /pages
-  # GET /pages.json
   def index
     @pages = @group.pages
   end
 
   # GET /pages/1
-  # GET /pages/1.json
   def show
   end
 
@@ -24,13 +22,12 @@ class PagesController < ApplicationController
   end
 
   # POST /pages
-  # POST /pages.json
   def create
     @page = @group.pages.build(page_params)
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to group_path(@group) }
+        format.html { redirect_to page_path(@page) }
       else
         format.html { render :action => "new" }
       end
@@ -38,12 +35,12 @@ class PagesController < ApplicationController
   end
 
   # PATCH/PUT /pages/1
-  # PATCH/PUT /pages/1.json
   def update
     @page.slug = nil
+    
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to group_path(@group) }
+        format.html { redirect_to page_path(@page) }
       else
         format.html { render :action => "edit" }
       end
@@ -51,7 +48,6 @@ class PagesController < ApplicationController
   end
 
   # DELETE /pages/1
-  # DELETE /pages/1.json
   def destroy
     @page.destroy
     respond_to do |format|

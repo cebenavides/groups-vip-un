@@ -26,7 +26,12 @@
 			<h3>Publications</h3>
 			<ul class="alt">
 				<% @publications.each do |publication| %>
-					<li><%= publication.name %> | <%= link_to "Link", publication.link %></li>
+					<li>
+						<%= publication.name %>
+						<% if publication.link.present? %>
+							| <%= link_to "Link", publication.link, :class => 'button special small' %>
+						<% end %>
+					</li>
 				<% end %>
 			</ul>
 		<% end %>
@@ -35,7 +40,7 @@
 			<h3>Pages</h3>
 			<ul class="alt">
 				<% @pages.each do |page| %>
-					<li><%= page.title %> | <%= link_to "Link", page %></li>
+					<li><%= page.title %> | <%= link_to "Read", page, :class => 'button special small' %></li>
 				<% end %>
 			</ul>
 		<% end %>
