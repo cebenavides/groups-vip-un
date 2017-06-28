@@ -16,7 +16,7 @@
 	<section class="box special">
 		<header class="major">
 			<h2>Research groups supervised by <br> Professor Winston Percybrooks</h2>
-			<p>These are our groups...</p>
+			<p>Site in construction</p>
 		</header>
 		<!--<span class="image featured"><img src="images/banner.jpg" alt="" /></span>-->
 	</section>
@@ -47,20 +47,22 @@
 			</section>
 		</div>
 	</section>-->
-
-	<div class="row">
-		<% @groups.each do |group| %>
-			<div class="4u 12u(narrower)">
-				<section class="box special">
-					<span class="image featured"><%= image_tag group.avatar.url(:medium) %></span>
-					<h3><%= group.name %></h3>
-					<ul class="actions">
-						<li><%= link_to "Learn more", group_path(group), :class => "button alt" %></li>
-					</ul>
-				</section>
-			</div>
-		<% end %>
-	</div>
+	
+	<% if admin_signed_in? %>
+		<div class="row">
+			<% @groups.each do |group| %>
+				<div class="4u 12u(narrower)">
+					<section class="box special">
+						<span class="image featured"><%= image_tag group.avatar.url(:medium) %></span>
+						<h3><%= group.name %></h3>
+						<ul class="actions">
+							<li><%= link_to "Learn more", group_path(group), :class => "button alt" %></li>
+						</ul>
+					</section>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
 
 </section>
 

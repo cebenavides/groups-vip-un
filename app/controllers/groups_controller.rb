@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController  
-  before_action :authenticate_admin, only: [:index]
+  #before_action :authenticate_admin, only: [:index]
+  before_action :authenticate_admin! #Temporary
   before_action :set_group, only: [:show, :edit, :update, :destroy, :list]
   before_action :authenticate_user, except: [:show, :index]
 
