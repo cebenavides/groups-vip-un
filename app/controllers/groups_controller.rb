@@ -47,6 +47,7 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    @group.slug = nil
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group }

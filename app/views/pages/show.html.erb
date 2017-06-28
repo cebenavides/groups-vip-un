@@ -3,7 +3,9 @@
 		<h2><%= @page.title %></h2>
 	</header>
 	<div class="box">
-		<%= @page.content.html_safe %>
+		<div class="pagecontent">
+			<%= @page.content.html_safe %>
+		</div>
 	    <%= link_to 'Back', group_path(@group), :class => 'button' %>
 	</div>
 </section>
