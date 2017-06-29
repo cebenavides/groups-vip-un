@@ -35,8 +35,6 @@ class PagesController < ApplicationController
 
   # PATCH/PUT /pages/1
   def update
-    @page.slug = nil
-    
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to page_path(@page) }

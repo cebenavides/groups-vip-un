@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
 	# For generating friendly routes
 	extend FriendlyId
-	friendly_id :name, use: :slugged
+	friendly_id :slug_candidates, use: :slugged
 
 	# For attaching an image
 	has_attached_file :avatar, styles: { medium: "300x300>" }, default_url: "/images/:style/missing_group.jpeg"
@@ -16,4 +16,16 @@ class Group < ApplicationRecord
 	def normalize_friendly_id(string)
 	  super[0..33]
 	end
+	
+	def should_generate_new_friendly_id?
+		name_changed? || super
+	end
+	
+	def slug_candidates
+		[
+	      :name,
+	      [:name, :id]
+	    ]
+	end
+	
 end
