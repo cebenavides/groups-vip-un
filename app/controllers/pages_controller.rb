@@ -1,5 +1,4 @@
 class PagesController < ApplicationController  
-  before_action :authenticate_admin! #Temporary
   before_action :set_page, only: [:show, :edit, :update, :destroy]  
   before_action :set_group
 
