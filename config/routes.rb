@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'dashboard/users'
   get 'dashboard/approve'
-
+  get 'dashboard/profile'
+  
+  patch 'admin' => 'dashboard#update'
+  put 'admin' => 'dashboard#update'
   post '/tinymce_assets' => 'tinymce_assets#create'  
 
   devise_for :users, :controllers => { registrations: 'registrations'}

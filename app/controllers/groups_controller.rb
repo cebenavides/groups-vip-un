@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @admin = Admin.first
     @users = @group.users.where(approved: true)
     @publications = @group.publications
     @pages = @group.pages

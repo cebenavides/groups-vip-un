@@ -10,6 +10,13 @@
 		<% if @users.any? %>
 			<h3>Members</h3>
 			<div class="row members">
+				<div class="3u 12u(narrower)">
+					<section class="box special">
+						<span class="image featured"><%= image_tag @admin.avatar.url(:medium) %></span>
+						<h4><%= @admin.name %></h4>
+						<p><%= @admin.position %></p>
+					</section>
+				</div>
 				<% @users.each do |user| %>
 					<div class="3u 12u(narrower)">
 						<section class="box special">

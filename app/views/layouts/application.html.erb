@@ -38,6 +38,7 @@
 						<% elsif admin_signed_in? %>
 	            <li><%= link_to('Groups', groups_path) %></li>   
 	            <li><%= link_to('Users', dashboard_users_path) %></li>
+	            <li><%= link_to('Edit my profile', dashboard_profile_path) %></li>
 						<% else %>
 							<li>
 								<a href="#" class="icon fa-angle-down">Sign in</a>

@@ -1,0 +1,36 @@
+<%= form_with(model: admin, url: admin_path, local: true, html: {multipart: true}) do |form| %>
+  <% if admin.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h3>
+
+      <ul>
+      <% admin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="row uniform 50%">
+    <div class="field 6u 12u(mobilep)">
+      <%= form.text_field :name, placeholder: 'Name' %>
+    </div>
+    
+    <div class="field 6u 12u(mobilep)">
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar %>
+    </div>
+  </div>
+  
+  <div class="row uniform 50%">
+    <div class="12u">
+      <%= form.text_area :position, placeholder: 'Description of yourself' %>
+    </div>
+  </div>
+  
+  <div class="row uniform">
+    <div class="actions 12u">
+      <%= form.submit 'Submit', :class => 'button special small' %>
+    </div>
+  </div>
+<% end %>
