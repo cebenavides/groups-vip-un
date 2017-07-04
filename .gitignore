@@ -23,6 +23,7 @@
 # Ignore paperclip images
 /public/system/groups/*
 /public/system/users/*
+/public/system/admins/*
 /public/system/images/*
 
 .byebug_history
