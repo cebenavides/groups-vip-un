@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-  	@groups = Group.all
+  	@groups = Group.where(visible: true)
   end
 end

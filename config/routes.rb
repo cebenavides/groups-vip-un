@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'dashboard/users'
   get 'dashboard/approve'
   get 'dashboard/profile'
+  get 'groups/visibility'
+  get 'pages/visibility'
+  get 'publications/visibility'
   
   patch 'admin' => 'dashboard#update'
   put 'admin' => 'dashboard#update'

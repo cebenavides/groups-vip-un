@@ -48,21 +48,19 @@
 		</div>
 	</section>-->
 	
-	<% if admin_signed_in? %>
-		<div class="row">
-			<% @groups.each do |group| %>
-				<div class="4u 12u(narrower)">
-					<section class="box special">
-						<span class="image featured"><%= image_tag group.avatar.url(:medium) %></span>
-						<h3><%= group.name %></h3>
-						<ul class="actions">
-							<li><%= link_to "Learn more", group_path(group), :class => "button alt" %></li>
-						</ul>
-					</section>
-				</div>
-			<% end %>
-		</div>
-	<% end %>
+	<div class="row">
+		<% @groups.each do |group| %>
+			<div class="4u 12u(narrower)">
+				<section class="box special">
+					<span class="image featured"><%= image_tag group.avatar.url(:medium) %></span>
+					<h3><%= group.name %></h3>
+					<ul class="actions">
+						<li><%= link_to "Learn more", group_path(group), :class => "button alt" %></li>
+					</ul>
+				</section>
+			</div>
+		<% end %>
+	</div>
 
 </section>
 

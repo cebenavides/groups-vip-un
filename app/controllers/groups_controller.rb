@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController  
-  before_action :authenticate_admin, only: [:index, :destroy]
+  before_action :authenticate_admin, only: [:index, :destroy, :visibility]
   before_action :set_group, only: [:show, :edit, :update, :destroy, :list]
-  before_action :authenticate_user, except: [:show, :index, :destroy]
+  before_action :authenticate_user, except: [:show, :index, :destroy, :visibility]
 
   # GET /groups
   def index
@@ -16,8 +16,8 @@ class GroupsController < ApplicationController
   def show
     @admin = Admin.first
     @users = @group.users.where(approved: true)
-    @publications = @group.publications
-    @pages = @group.pages
+    @publications = @group.publications.where(visible: true)
+    @pages = @group.pages.where(visible: true)
   end
 
   # GET /groups/new
@@ -60,23 +60,27 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url, notice: 'Group was successfully deleted.' }
     end
   end
+  
+  def visibility
+  	group = Group.find(params[:group])
+  	group.update(visible: !group.visible)
+  	redirect_to groups_path
+  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.friendly.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
       params.require(:group).permit(:name, :description, :avatar)
     end
 
     def authenticate_user
-        redirect_to '/', alert: 'Not authorized.' unless (current_user && current_user.group == @group) || current_admin
+      redirect_to '/', alert: 'Not authorized.' unless (current_user && current_user.group == @group) || current_admin
     end
 
     def authenticate_admin
-        redirect_to '/', alert: 'Not authorized.' unless current_admin
+      redirect_to '/', alert: 'Not authorized.' unless current_admin
     end
 end

@@ -1,6 +1,6 @@
 class PublicationsController < ApplicationController
-  before_action :set_group, except: [:index]
-  before_action :authenticate_user, except: [:index]
+  before_action :set_group, except: [:visibility]
+  before_action :authenticate_user
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
 
   # GET /publications
@@ -25,7 +25,7 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
-        format.html { redirect_to group_path(@group) }
+        format.html { redirect_to list_group_path(@group) }
       else
         format.html { render :action => "new" }
       end
@@ -37,7 +37,7 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
-        format.html { redirect_to group_path(@group) }
+        format.html { redirect_to list_group_path(@group) }
       else
         format.html { render :action => "edit" }
       end
@@ -49,8 +49,14 @@ class PublicationsController < ApplicationController
   def destroy
     @publication.destroy
     respond_to do |format|
-      format.html { redirect_to group_path(@group) }
+      format.html { redirect_to list_group_path(@group) }
     end
+  end
+  
+  def visibility
+  	publication = Publication.find(params[:publication])
+  	publication.update(visible: !publication.visible)
+  	redirect_to list_group_path(publication.group)
   end
 
   private

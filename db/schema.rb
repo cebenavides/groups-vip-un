@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629214414) do
+ActiveRecord::Schema.define(version: 20170705153608) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170629214414) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean "visible", default: false, null: false
     t.index ["slug"], name: "index_groups_on_slug", unique: true
   end
 
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170629214414) do
     t.integer "group_id"
     t.string "title"
     t.string "slug"
+    t.boolean "visible", default: false, null: false
     t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
 
@@ -76,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170629214414) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "group_id"
+    t.boolean "visible", default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|

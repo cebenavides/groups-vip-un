@@ -22,7 +22,7 @@ class DashboardController < ApplicationController
 	  end
 	end
 
-  	def approve
+  	def visibility
   	  user = User.find(params[:user])
   	  if user.update(approved: true)
   	    redirect_to dashboard_users_path

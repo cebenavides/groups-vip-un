@@ -8,7 +8,7 @@
         <tr>
           <th>Name</th>
           <th>Description</th>
-          <th colspan="5"></th>
+          <th colspan="6"></th>
         </tr>
       </thead>
   
@@ -21,6 +21,7 @@
             <td><%= link_to 'Publications', list_group_path(group) %></td>
             <td><%= link_to 'Pages', group_pages_path(group) %></td>
             <td><%= link_to 'Edit', edit_group_path(group) %></td>
+            <td><%= link_to group.visible ? "Hide":"Make visible", :action => "visibility", :group => group.id %></td>
             <td><%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
