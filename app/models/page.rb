@@ -4,7 +4,7 @@ class Page < ApplicationRecord
 	friendly_id :slug_candidates, use: :slugged
 	
 	belongs_to :group
-	has_many :images
+	has_many :images, dependent: :destroy
 	
 	# For limiting the length of the slug
 	def normalize_friendly_id(string)

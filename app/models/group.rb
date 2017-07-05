@@ -8,9 +8,9 @@ class Group < ApplicationRecord
   	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   	# For having users, publications and pages
-	has_many :users
-	has_many :publications
-	has_many :pages
+	has_many :users, dependent: :destroy
+	has_many :publications, dependent: :destroy
+	has_many :pages, dependent: :destroy
 	
 	# For limiting the length of the slug
 	def normalize_friendly_id(string)
