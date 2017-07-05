@@ -19,3 +19,4 @@
 //= require skel.min
 //= require util
 //= require main
+//= require owl.carousel.min

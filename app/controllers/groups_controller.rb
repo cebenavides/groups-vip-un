@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
     @users = @group.users.where(approved: true)
     @publications = @group.publications.where(visible: true)
     @pages = @group.pages.where(visible: true)
+    @images = @group.group_images
   end
 
   # GET /groups/new

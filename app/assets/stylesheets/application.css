@@ -11,6 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
+ *= require owl.carousel.min
+ *= require owl.theme.default.min
  *= require main
  *# require_tree .
  *= require_self

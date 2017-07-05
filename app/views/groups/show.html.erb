@@ -3,7 +3,13 @@
 		<h2><%= @group.name %></h2>
 	</header>
 	<div class="box">
-		<a href="#" class="image fit"><%= image_tag @group.avatar.url %></a>
+		
+		<div class="owl-carousel owl-theme">
+			<% @images.each do |image| %>
+		    	<div class="item"><%= image_tag image.avatar.url %></div>
+		    <% end %>
+		</div>
+
 		
 		<p align="justify"><%= @group.description %></p>
 
@@ -53,3 +59,12 @@
 		<% end %>
 	</div>
 </section>
+
+<script>
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+	items:1
+})
+</script>

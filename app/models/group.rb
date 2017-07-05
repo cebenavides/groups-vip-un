@@ -3,14 +3,11 @@ class Group < ApplicationRecord
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
 
-	# For attaching an image
-	has_attached_file :avatar, styles: { medium: "300x300#" }, default_url: "/images/:style/missing_group.jpeg"
-  	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-
-  	# For having users, publications and pages
+  	# For having users, publications, images and pages
 	has_many :users, dependent: :destroy
 	has_many :publications, dependent: :destroy
 	has_many :pages, dependent: :destroy
+	has_many :group_images, dependent: :destroy
 	
 	# For limiting the length of the slug
 	def normalize_friendly_id(string)

@@ -11,20 +11,25 @@
     </div>
   <% end %>
   
-  <div class="row uniform 50%">
+  <div class="row">
     <div class="field 6u 12u(mobilep)">
-      <%= form.text_field :name, placeholder: 'Name' %>
+      <div class="row uniform 50%">
+        <div class="field 12u">
+          <%= form.text_field :name, placeholder: 'Name' %>
+        </div>
+      </div>
+      
+      <div class="row uniform 50%">
+        <div class="12u">
+          <%= form.text_area :position, placeholder: 'Description of yourself', rows: 8 %>
+        </div>
+      </div>
     </div>
     
     <div class="field 6u 12u(mobilep)">
       <%= form.label :avatar %>
+      <%= image_tag admin.avatar.url(:medium) %><br>
       <%= form.file_field :avatar %>
-    </div>
-  </div>
-  
-  <div class="row uniform 50%">
-    <div class="12u">
-      <%= form.text_area :position, placeholder: 'Description of yourself' %>
     </div>
   </div>
   
