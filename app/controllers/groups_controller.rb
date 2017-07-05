@@ -1,11 +1,9 @@
 class GroupsController < ApplicationController  
-  #before_action :authenticate_admin, only: [:index]
-  before_action :authenticate_admin! #Temporary
+  before_action :authenticate_admin, only: [:index, :destroy]
   before_action :set_group, only: [:show, :edit, :update, :destroy, :list]
-  before_action :authenticate_user, except: [:show, :index]
+  before_action :authenticate_user, except: [:show, :index, :destroy]
 
   # GET /groups
-  # GET /groups.json
   def index
     @groups = Group.all
   end
@@ -15,7 +13,6 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1
-  # GET /groups/1.json
   def show
     @admin = Admin.first
     @users = @group.users.where(approved: true)
@@ -33,7 +30,6 @@ class GroupsController < ApplicationController
   end
 
   # POST /groups
-  # POST /groups.json
   def create
     @group = Group.new(group_params)
 
@@ -47,7 +43,6 @@ class GroupsController < ApplicationController
   end
 
   # PATCH/PUT /groups/1
-  # PATCH/PUT /groups/1.json
   def update
     respond_to do |format|
       if @group.update(group_params)
@@ -59,11 +54,10 @@ class GroupsController < ApplicationController
   end
 
   # DELETE /groups/1
-  # DELETE /groups/1.json
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      format.html { redirect_to groups_url, notice: 'Group was successfully deleted.' }
     end
   end
 

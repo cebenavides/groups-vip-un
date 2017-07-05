@@ -1,6 +1,7 @@
 class PagesController < ApplicationController  
   before_action :set_page, only: [:show, :edit, :update, :destroy]  
   before_action :set_group
+  before_action :authenticate_user, except: [:show]
 
   # GET /pages
   def index
@@ -53,7 +54,6 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = Page.friendly.find(params[:id])
     end
@@ -66,8 +66,11 @@ class PagesController < ApplicationController
       end
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
       params.require(:page).permit(:title, :content, :group_id)
+    end
+    
+    def authenticate_user
+      redirect_to '/', alert: 'Not authorized.' unless (current_user && current_user.group == @group) || current_admin
     end
 end
