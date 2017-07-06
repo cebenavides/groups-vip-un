@@ -16,7 +16,7 @@
 		<h3>Members</h3>
 		<div class="row">
 			<p align="justify">
-				<span class="image left"><%= image_tag @admin.avatar.url(:medium), :style => "width:100px;height:100px;" %></span>
+				<span class="image left"><%= image_tag @admin.avatar.url(:medium) %></span>
 				<strong><%= @admin.name %>.</strong> <%= @admin.position %>
 			</p>
 		</div>
@@ -24,7 +24,7 @@
 		<% @users.each do |user| %>
 			<div class="row">
 				<p align="justify">
-					<span class="image left"><%= image_tag user.avatar.url(:medium), :style => "width:100px;height:100px;" %></span>
+					<span class="image left"><%= image_tag user.avatar.url(:medium) %></span>
 					<strong><%= user.name %>.</strong> <%= user.position %>
 					<% if user.site.present? %>
 						| <%= link_to "", user.site, :class => 'icon fa-desktop' %>
@@ -40,7 +40,7 @@
 					<li>
 						<%= publication.name %>
 						<% if publication.link.present? %>
-							| <%= link_to "Link", publication.link, :class => 'button special small' %>
+							| <%= link_to ' View', publication.link, :class => 'icon fa-eye' %>
 						<% end %>
 					</li>
 				<% end %>
@@ -51,7 +51,7 @@
 			<h3>Pages</h3>
 			<ul class="alt">
 				<% @pages.each do |page| %>
-					<li><%= page.title %> | <%= link_to "Read", page, :class => 'button special small' %></li>
+					<li><%= page.title %> | <%= link_to ' Read', page, :class => 'icon fa-eye' %></li>
 				<% end %>
 			</ul>
 		<% end %>
