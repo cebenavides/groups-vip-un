@@ -29,8 +29,10 @@
 							<li>
 								<a href="#" class="icon fa-angle-down">My group</a>
 								<ul>
+									<li><%= link_to('Show', current_user.group) %></li>
 									<li><%= link_to('Publications', list_group_path(current_user.group)) %></li>
 			            <li><%= link_to('Pages', group_pages_path(current_user.group)) %></li>   
+			            <li><%= link_to('Group images', group_group_images_path(current_user.group)) %></li>
 			            <li><%= link_to('Edit information', edit_group_path(current_user.group)) %></li>   
 								</ul>
 							</li>

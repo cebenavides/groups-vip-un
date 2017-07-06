@@ -1,0 +1,10 @@
+<section id="main" class="container">
+	<header>
+		<h2>Editing Group Image</h2>
+		<p><%= @group.name %> group</p>
+	</header>
+	<div class="box">
+	  <%= render 'form', group: @group, group_image: @group_image %>
+      <%= link_to 'Back', group_group_images_path(@group), :class => 'button small' %>
+	</div>
+</section>

@@ -8,7 +8,6 @@ class PublicationsController < ApplicationController
     @publications = Publication.all
   end
 
-
   # GET /publications/new
   def new    
     @publication = @group.publications.build

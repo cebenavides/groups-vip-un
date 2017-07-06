@@ -1,0 +1,21 @@
+<section id="main" class="container">
+	<header>
+		<h2>Group Images</h2>
+		<p><%= @group.name %> group</p>
+	</header>
+	<div class="box">
+	  <div class="row members">
+			<% @group_images.each do |group_image| %>
+				<div class="3u 12u(narrower)">
+					<section class="box special">
+						<span class="image featured"><%= image_tag group_image.avatar.url(:medium) %></span>
+						<%= link_to 'Edit', edit_group_group_image_path(@group, group_image), :class => 'button small' %>
+	          <%= link_to 'Delete', group_group_image_path(@group, group_image), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button special small' %>
+					</section>
+				</div>
+			<% end %>
+		</div>
+    
+    <%= link_to 'New Group Image', new_group_group_image_path(@group), :class => 'button special small' %>
+	</div>
+</section>

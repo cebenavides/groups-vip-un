@@ -1,0 +1,26 @@
+<%= form_with(model: [group, group_image], local: true) do |form| %>
+  <% if group_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group_image.errors.count, "error") %> prohibited this group_image from being saved:</h2>
+
+      <ul>
+      <% group_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="row uniform 50%">
+    <div class="field 12u">
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar %>
+    </div>
+  </div>
+
+  <div class="row uniform">
+    <div class="actions 12u">
+      <%= form.submit 'Submit', :class => 'button special small' %>
+    </div>
+  </div>
+<% end %>

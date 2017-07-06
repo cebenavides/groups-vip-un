@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     get 'list', on: :member
+    resources :group_images, except: :show
     resources :publications, except: :index
     resources :pages, shallow: true
   end  

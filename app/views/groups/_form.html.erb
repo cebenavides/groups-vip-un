@@ -12,7 +12,7 @@
   <% end %>
   
   <div class="row">
-    <div class="field 6u 12u(mobilep)">
+    <div class="field 12u">
       <div class="row uniform 50%">
         <div class="field 12u">
           <%= form.text_field :name, id: :group_name, placeholder: 'Name' %>
@@ -24,12 +24,6 @@
           <%= form.text_area :description, id: :group_description, placeholder: 'Description', rows: 8 %>
         </div>
       </div>
-    </div>
-    
-    <div class="field 6u 12u(mobilep)">
-      <%= form.label :avatar %>
-      <%= image_tag group.avatar.url(:medium) %><br>
-      <%= form.file_field :avatar %>
     </div>
   </div>
   
