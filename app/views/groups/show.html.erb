@@ -13,28 +13,26 @@
 		
 		<p align="justify"><%= @group.description %></p>
 
-		<% if @users.any? %>
-			<h3>Members</h3>
-			<div class="row members">
-				<div class="3u 12u(narrower)">
-					<section class="box special">
-						<span class="image featured"><%= image_tag @admin.avatar.url(:medium) %></span>
-						<h4><%= @admin.name %></h4>
-						<p><%= @admin.position %></p>
-					</section>
-				</div>
-				<% @users.each do |user| %>
-					<div class="3u 12u(narrower)">
-						<section class="box special">
-							<span class="image featured"><%= image_tag user.avatar.url(:medium) %></span>
-							<h4><%= user.name %></h4>
-							<p><%= user.position %></p>
-						</section>
-					</div>
-				<% end %>
+		<h3>Members</h3>
+		<div class="row">
+			<p align="justify">
+				<span class="image left"><%= image_tag @admin.avatar.url(:medium), :style => "width:100px;height:100px;" %></span>
+				<strong><%= @admin.name %>.</strong> <%= @admin.position %>
+			</p>
+		</div>
+		
+		<% @users.each do |user| %>
+			<div class="row">
+				<p align="justify">
+					<span class="image left"><%= image_tag user.avatar.url(:medium), :style => "width:100px;height:100px;" %></span>
+					<strong><%= user.name %>.</strong> <%= user.position %>
+					<% if user.site.present? %>
+						| <%= link_to "", user.site, :class => 'icon fa-desktop' %>
+					<% end %>
+				</p>
 			</div>
 		<% end %>
-
+			
 		<% if @publications.any? %>
 			<h3>Publications</h3>
 			<ul class="alt">

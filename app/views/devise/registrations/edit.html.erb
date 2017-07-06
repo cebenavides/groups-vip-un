@@ -47,6 +47,12 @@
           
           <div class="row uniform 50%">
             <div class="12u">
+              <%= f.text_field :site, placeholder: 'Website (please use http://)' %>
+            </div>
+          </div>
+          
+          <div class="row uniform 50%">
+            <div class="12u">
               <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Current password (necessary)' %>
             </div>
           </div>

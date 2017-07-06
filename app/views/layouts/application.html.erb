@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VIP groups</title>
+    <title>Robotics, Signal Processing and more</title>
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,7 +15,7 @@
 			<!-- Header -->
 			<header id="header" class="<%= yield :header_class %>">
 				<h1>
-					<a href="/">VIP groups</a>
+					<a href="/">Robotics, Signal Processing and more</a>
 					<% if user_signed_in? %>
 	        	| <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "button alt small") %>
 					<% elsif admin_signed_in? %>
