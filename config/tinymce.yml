@@ -1,6 +1,6 @@
 theme: "modern"
 toolbar:
-  - styleselect | bold italic | undo redo | forecolor
+  - styleselect | bold italic | undo redo | forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent
   - image | uploadimage | media | link | table
 plugins:
   - image
