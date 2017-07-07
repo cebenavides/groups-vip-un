@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706163345) do
+ActiveRecord::Schema.define(version: 20170707212715) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170706163345) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.text "content"
+    t.text "content", limit: 4294967295
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "group_id"
