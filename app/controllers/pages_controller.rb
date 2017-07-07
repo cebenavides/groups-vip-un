@@ -1,6 +1,6 @@
 class PagesController < ApplicationController  
-  before_action :set_page, only: [:show, :edit, :update, :destroy]  
-  before_action :set_group, except: [:visibility]
+  before_action :set_page, only: [:show, :edit, :update, :destroy, :visibility]  
+  before_action :set_group
   before_action :authenticate_user, except: [:show]
 
   # GET /pages
@@ -54,9 +54,8 @@ class PagesController < ApplicationController
   end
   
   def visibility
-  	page = Page.find(params[:page])
-  	page.update(visible: !page.visible)
-  	redirect_to group_pages_path(page.group)
+  	@page.update(visible: !@page.visible)
+  	redirect_to group_pages_path(@page.group)
   end
 
   private

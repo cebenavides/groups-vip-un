@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   get 'dashboard/users'
   get 'dashboard/approve'
   get 'dashboard/profile'
-  get 'groups/visibility'
-  get 'pages/visibility'
-  get 'publications/visibility'
   
   patch 'admin' => 'dashboard#update'
   put 'admin' => 'dashboard#update'
@@ -18,8 +15,13 @@ Rails.application.routes.draw do
 
   resources :groups do
     get 'list', on: :member
+    get 'visibility', on: :member
     resources :group_images, except: :show
-    resources :publications, except: :index
-    resources :pages, shallow: true
+    resources :publications, except: :index do
+      get 'visibility', on: :member
+    end
+    resources :pages, shallow: true do
+      get 'visibility', on: :member
+    end
   end  
 end

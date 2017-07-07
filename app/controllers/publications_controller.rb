@@ -1,7 +1,7 @@
 class PublicationsController < ApplicationController
-  before_action :set_group, except: [:visibility]
+  before_action :set_publication, only: [:show, :edit, :update, :destroy, :visibility]
+  before_action :set_group
   before_action :authenticate_user
-  before_action :set_publication, only: [:show, :edit, :update, :destroy]
 
   # GET /publications
   def index
@@ -53,9 +53,8 @@ class PublicationsController < ApplicationController
   end
   
   def visibility
-  	publication = Publication.find(params[:publication])
-  	publication.update(visible: !publication.visible)
-  	redirect_to list_group_path(publication.group)
+  	@publication.update(visible: !@publication.visible)
+  	redirect_to list_group_path(@publication.group)
   end
 
   private
@@ -64,7 +63,11 @@ class PublicationsController < ApplicationController
     end
     
     def set_group
-      @group = Group.friendly.find(params[:group_id])
+      if params[:group_id]
+        @group = Group.friendly.find(params[:group_id])
+      else
+        @group = @publication.group
+      end
     end
     
     def authenticate_user

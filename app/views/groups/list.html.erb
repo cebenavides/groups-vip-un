@@ -20,7 +20,7 @@
             <td><%= publication.link %></td>
             <td><%= link_to 'Add', new_group_publication_path(@group) %></td>
             <td><%= link_to 'Edit', edit_group_publication_path(@group, publication) %></td>
-            <td><%= link_to publication.visible ? "Hide":"Make visible", :controller => :publications, :action => "visibility", :publication => publication.id %></td>
+            <td><%= link_to publication.visible ? "Hide":"Make visible", visibility_group_publication_path(@group, publication) %></td>
             <td><%= link_to 'Delete', group_publication_path(@group, publication), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>

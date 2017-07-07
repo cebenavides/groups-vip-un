@@ -33,7 +33,8 @@
 									<li><%= link_to('Publications', list_group_path(current_user.group)) %></li>
 			            <li><%= link_to('Pages', group_pages_path(current_user.group)) %></li>   
 			            <li><%= link_to('Group images', group_group_images_path(current_user.group)) %></li>
-			            <li><%= link_to('Edit information', edit_group_path(current_user.group)) %></li>   
+			            <li><%= link_to('Edit information', edit_group_path(current_user.group)) %></li>
+			            <li><%= link_to current_user.group.visible ? "Hide":"Make visible", visibility_group_path(current_user.group) %></li>
 								</ul>
 							</li>
 	            <li><%= link_to('Edit my profile', edit_user_registration_path) %></li>

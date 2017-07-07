@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController  
-  before_action :authenticate_admin, only: [:index, :destroy, :visibility]
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :list]
-  before_action :authenticate_user, except: [:show, :index, :destroy, :visibility]
+  before_action :authenticate_admin, only: [:index, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :list, :visibility]
+  before_action :authenticate_user, except: [:show, :index, :destroy]
 
   # GET /groups
   def index
@@ -63,9 +63,8 @@ class GroupsController < ApplicationController
   end
   
   def visibility
-  	group = Group.find(params[:group])
-  	group.update(visible: !group.visible)
-  	redirect_to groups_path
+  	@group.update(visible: !@group.visible)
+  	redirect_to admin_signed_in? ? groups_path : root_path
   end
 
   private
