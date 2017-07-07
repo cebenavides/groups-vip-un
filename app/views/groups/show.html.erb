@@ -18,6 +18,9 @@
 			<p align="justify">
 				<span class="image left"><%= image_tag @admin.avatar.url(:medium) %></span>
 				<strong><%= @admin.name %>.</strong> <%= @admin.position %>
+				<% if @admin.site.present? %>
+					| <%= link_to "", @admin.site, :class => 'icon fa-desktop' %>
+				<% end %>
 			</p>
 		</div>
 		

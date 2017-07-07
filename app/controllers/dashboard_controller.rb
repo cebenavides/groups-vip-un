@@ -31,7 +31,7 @@ class DashboardController < ApplicationController
 
   	private  
   	  def group_params
-        params.require(:admin).permit(:name, :position, :avatar)
+        params.require(:admin).permit(:name, :position, :avatar, :site)
       end
       
 	  def authenticate_admin
