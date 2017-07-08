@@ -22,7 +22,7 @@
             <td><%= link_to 'Pages', group_pages_path(group) %></td>
             <td><%= link_to 'Group images', group_group_images_path(group) %></td>
             <td><%= link_to 'Edit', edit_group_path(group) %></td>
-            <td><%= link_to group.visible ? "Hide":"Make visible", :action => "visibility", :group => group.id %></td>
+            <td><%= link_to group.visible ? "Hide":"Make visible", visibility_group_path(group) %></td>
             <td><%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
